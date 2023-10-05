@@ -1,3 +1,3 @@
-# CSSCR_Consulting[https://depts.washington.edu/csscr/about/]
+# CSSCR_Consulting
 
 Here, I add clients' requests.
