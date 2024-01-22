@@ -6,8 +6,9 @@ output:
   html_document: default
   pdf_document: default
 ---
+# Introduction to R using R Studio
 
-# Introduction to R
+## Introduction to R
 
 R is a versatile programming language widely used for statistical analysis and data visualization. Its comprehensive libraries enable effective data manipulation, making it essential for researchers and data scientists. This workshop provides a foundational understanding of R's syntax and functions, focusing on data handling and graphical representation.
 
@@ -19,32 +20,26 @@ R is a versatile programming language widely used for statistical analysis and d
 5*2
 ```
 
+## `x = 1` vs. `x <- 1`
 
 In R, `x = 1` and `x <- 1` both assign the value `1` to `x`. The traditional `<-` operator is preferred for variable assignments due to its clarity and readability, while `=` is commonly used for specifying function arguments. Though functionally similar in most cases, `<-` is the conventional choice in R scripting for assignment operations.
 
 
-## data type and assign values
+## Data Type & Assign Values
+
 ```{r}
-# values
-## numbers
 2.1
-## logic
 F
-## character
 "Happy"
 "2"
 
-# assign values
-## assign the number 2.1 to object called a
-a <- 2.1
-## assign another value to a
 a <- 3
 ## assign the character 2.1 to object called b
 b <- "2.1"
 ## assign the character hello to object called bb
-bb <- "happy"
+c <- "happy"
 ## assign the value of object a to object called c
-c <- a
+d <- a
 ```
 
 # built-in mathematical functions
@@ -62,14 +57,14 @@ R provides a variety of built-in mathematical functions. Here are a few examples
 These functions exemplify the simplicity and power of R for mathematical computations.
 
 
-## types of objects
+## Types of Objects
 ```{r}
-## create a vector
+# vector
 numbers <- c(1,4,2)
 
-colors <- c("apple", "car", "blue")
+colors <- c("lightgreen", "pink", "blue")
 
-## create data frame 
+# data frame 
 demo_data <- 	data.frame(
   gender = c("Male", "Male","Female"), 
   height = c(152, 171.5, 165), 
@@ -77,7 +72,7 @@ demo_data <- 	data.frame(
   Age    = c(42,38,26)
   )
 
-## create a list
+# list
 mylist <- list(2.1, c(1,3,7), c("abc", "def"), demo_data)
 
 ```
@@ -122,7 +117,7 @@ CSSCR_data$INCTOT <- c(100000, 11600, 105000, 79400, 2300, 73000, 138000, 15000,
 ```
 
 
-# Data Analysis Essentials 
+## Data Analysis Essentials 
 
 The R code provided performs fundamental data analysis operations on the  `CSSCR_data` dataset.
 
@@ -135,19 +130,30 @@ median(CSSCR_data$AGE)
 ```
 
 
-# count 
+## Count 
 ```{r}
 count(CSSCR_data,AGE > 30)
 help("count")
 ?count
 
 ```
-# simple plot
+# Simple Plot
 ```{r}
 plot(CSSCR_data$AGE, CSSCR_data$INCTOT)
 ```
+# Less Simple Plot
+```{r}
+plot(CSSCR_data$AGE, CSSCR_data$INCTOT, 
+     main = "Age vs. Income", 
+     xlab = "Age", 
+     ylab = "Income",
+     ylim = c(0,150000),
+     xlim = c(18,85))
 
-# fancy plot
+?plot
+```
+
+# Fancy Plot
 ```{r}
 # Install and load the ggplot2 package
 #install.packages("ggplot2")
@@ -159,7 +165,7 @@ ggplot(CSSCR_data, aes(x = AGE, y = INCTOT)) +
   geom_point() +  # Scatter plot
   geom_smooth(method = "lm", se = FALSE, color = "blue") +  # Linear fit
   geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE, color = "red") +  # Quadratic fit
-  ylim(0, 150000) +  # Setting y-axis limits
+  ylim(0, 150000) + 
   labs(title = "Income vs Age", x = "Age", y = "Total Personal Income")
 
 
