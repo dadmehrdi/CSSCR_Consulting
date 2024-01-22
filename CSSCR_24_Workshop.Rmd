@@ -55,6 +55,17 @@ R provides a variety of built-in mathematical functions. Here are a few examples
 These functions exemplify the simplicity and power of R for mathematical computations.
 
 
+```{r}
+pi
+sqrt(4)
+exp(1) # Euler's number
+log(1)
+sin(3.1415)
+tan(3.1415)
+```
+
+
+
 ## Types of Objects
 ```{r}
 # vector
