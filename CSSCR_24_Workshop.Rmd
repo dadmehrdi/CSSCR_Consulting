@@ -8,11 +8,9 @@ output:
 ---
 # Introduction to R using R Studio
 
-## Introduction to R
-
 R is a versatile programming language widely used for statistical analysis and data visualization. Its comprehensive libraries enable effective data manipulation, making it essential for researchers and data scientists. This workshop provides a foundational understanding of R's syntax and functions, focusing on data handling and graphical representation.
 
-## simple calculation
+## Simple Calculation
 
 ```{r}
 3+4
@@ -42,7 +40,7 @@ c <- "happy"
 d <- a
 ```
 
-# built-in mathematical functions
+## Built-in Mathematical Functions
 
 R provides a variety of built-in mathematical functions. Here are a few examples:
 
@@ -52,7 +50,7 @@ R provides a variety of built-in mathematical functions. Here are a few examples
 
 - **Logarithm**: The `log()` function computes logarithms. `log(10)` gives the natural logarithm of 10, equal to `r log(10)`.
 
-- **Trigonometry**: Functions like `sin()`, `cos()`, and `tan()` are used for trigonometric calculations. For example, `sin(pi/2)` computes the sine of π/2, resulting in `r sin(pi/2)`.
+- **Trigonometry**: Functions like `sin()`, `cos()`, and `tan()` are used for trigonometric calculations. 
 
 These functions exemplify the simplicity and power of R for mathematical computations.
 
@@ -95,13 +93,14 @@ if (x > 0) {
 
 ```{r}
 for (i in 1:5) {
-  print(paste("Value of i is", i))
+  print(i)
+  #print(paste("Value of i is", i))
 }
 ```
 
 # Census Data
 
-CSSCR_data is a small sample (0.005%) of the census data for 2022
+CSSCR_data is a small random sample (0.005%) of the census data for 2022
 
 
 ```{r}
@@ -131,17 +130,24 @@ median(CSSCR_data$AGE)
 
 
 ## Count 
+
 ```{r}
+#install.packages("dplyr")
+library(dplyr)
 count(CSSCR_data,AGE > 30)
 help("count")
 ?count
 
 ```
-# Simple Plot
+
+## Simple Plot
+
 ```{r}
 plot(CSSCR_data$AGE, CSSCR_data$INCTOT)
 ```
-# Less Simple Plot
+
+## Less Simple Plot
+
 ```{r}
 plot(CSSCR_data$AGE, CSSCR_data$INCTOT, 
      main = "Age vs. Income", 
@@ -153,7 +159,8 @@ plot(CSSCR_data$AGE, CSSCR_data$INCTOT,
 ?plot
 ```
 
-# Fancy Plot
+## Fancy Plot
+
 ```{r}
 # Install and load the ggplot2 package
 #install.packages("ggplot2")
