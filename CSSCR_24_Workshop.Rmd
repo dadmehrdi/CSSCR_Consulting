@@ -3,8 +3,8 @@ title: "CSSCR R Workshop"
 author: "Dadmehr Didgar"
 date: "2024-1-22"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 # Introduction to R using R Studio
 
@@ -178,4 +178,26 @@ ggplot(CSSCR_data, aes(x = AGE, y = INCTOT)) +
 
   
 ```
+
+# Download Data, `setwd` & `read.csv`
+## National Obesity By State Data Analysis
+
+The dataset on national obesity by state can be found at [Data.gov](https://catalog.data.gov/dataset/national-obesity-by-state-d765a). Follow the link to download the CSV file and save it in your working directory.
+
+```{r}
+getwd()
+
+#setwd("/Users/dadmehr/R")
+
+# Destination file path (where you want to save the file)
+obesity_data <- read.csv("National_Obesity_By_State.csv")
+
+# View the first few rows of the dataset
+head(obesity_data)
+tail(obesity_data, n = 10)
+?tail
+summary(obesity_data)
+?summary
+```
+
 
