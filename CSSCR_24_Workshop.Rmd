@@ -211,4 +211,31 @@ summary(obesity_data)
 ?summary
 ```
 
+## Pipe Operator `%>%`
 
+The pipe operator `%>%` from the `magrittr` package, which is integrated into `dplyr`, allows for clearer and more intuitive syntax when chaining together multiple data manipulation commands. It passes the result of one expression as the first argument to the next expression, making your code more readable and concise.
+
+### Why Use the Pipe Operator?
+
+- **Readability**: Code is more readable and easier to understand.
+- **Simplification**: Reduces the need for intermediate variables.
+- **Flow of Operations**: Reflects the logical flow of operations, making complex operations easier to follow.
+
+
+### With Pipe
+
+```{r}
+# Load the dplyr package
+library(dplyr)
+
+obesity_data %>%
+  filter(Obesity > 34 ) %>%
+  arrange(desc(Obesity))
+
+```
+### Without Pipe
+```{r}
+
+arrange(filter(obesity_data, Obesity > 34), desc(Obesity))
+
+```
