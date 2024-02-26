@@ -1,0 +1,243 @@
+---
+title: "CSSCR R Workshop"
+author: "Dadmehr Didgar"
+date: "2024-1-22"
+output:
+  pdf_document: default
+  html_document: default
+---
+# Introduction to R using R Studio
+
+R is a versatile programming language widely used for statistical analysis and data visualization. Its comprehensive libraries enable effective data manipulation, making it essential for researchers and data scientists. This workshop provides a foundational understanding of R's syntax and functions, focusing on data handling and graphical representation.
+
+## Simple Calculation
+
+```{r}
+3+4
+2/3
+5*2
+```
+
+## `x = 1` vs. `x <- 1`
+
+In R, `x = 1` and `x <- 1` both assign the value `1` to `x`. The traditional `<-` operator is preferred for variable assignments due to its clarity and readability, while `=` is commonly used for specifying function arguments. Though functionally similar in most cases, `<-` is the conventional choice in R scripting for assignment operations.
+
+
+## Data Type & Assign Values
+
+```{r}
+2.1
+F
+"Happy"
+"2"
+
+a <- 3
+## assign the character 2.1 to object called b
+b <- "2.1"
+## assign the character hello to object called bb
+c <- "happy"
+## assign the value of object a to object called c
+d <- a
+```
+
+## Built-in Mathematical Functions
+
+R provides a variety of built-in mathematical functions. Here are a few examples:
+
+- **Square Root**: The `sqrt()` function computes the square root of a number. For example, `sqrt(16)` will give `r sqrt(16)`.
+
+- **Exponential**: The `exp()` function calculates the exponential of a number. For instance, `exp(1)` computes e^1, which is approximately `r exp(1)`.
+
+- **Logarithm**: The `log()` function computes logarithms. `log(10)` gives the natural logarithm of 10, equal to `r log(10)`.
+
+- **Trigonometry**: Functions like `sin()`, `cos()`, and `tan()` are used for trigonometric calculations. 
+
+These functions exemplify the simplicity and power of R for mathematical computations.
+
+
+```{r}
+pi
+sqrt(4)
+exp(1) # Euler's number
+log(1)
+sin(3.1415)
+tan(3.1415)
+```
+
+
+
+## Types of Objects
+```{r}
+# vector
+numbers <- c(1,4,2)
+
+colors <- c("lightgreen", "pink", "blue")
+
+# data frame 
+demo_data <- 	data.frame(
+  gender = c("Male", "Male","Female"), 
+  height = c(152, 171.5, 165), 
+  weight = c(81,93, 78),
+  age    = c(42,38,26)
+  )
+
+# list
+mylist <- list(2.1, c(1,3,7), c("abc", "def"), demo_data)
+
+```
+
+# If Clause in R
+
+```{r}
+x <- 5
+
+if (x > 0) {
+  print("x is positive")
+} else {
+  print("x is not positive")
+}
+
+```
+
+
+# For Loop in R
+
+```{r}
+for (i in 1:5) {
+  print(i) # here i am printing i 
+  
+  #print(paste("Value of i is", i))
+}
+```
+
+# Census Data
+
+CSSCR_data is a small random sample (0.005%) of the census data for 2022
+
+
+```{r}
+
+# sampled_data <- data[sample(nrow(data), nrow(data) * 0.00005), ]
+
+CSSCR_data <- data.frame(AGE = c(36, 66, 48, 84, 76, 61, 69, 33, 95, 61, 83, 69, 29, 73, 28, 80, 49, 48, 30, 54, 65, 71, 23, 67, 74, 81, 58, 76, 49, 29, 21, 33, 62, 25, 22, 24, 18, 40, 27, 23, 81, 62, 61, 28, 30, 40, 84, 21, 50, 27, 75, 37, 50, 71, 23, 74, 57, 35, 64, 62, 42, 50, 16, 65, 70, 43, 33, 37, 61, 18, 64, 52, 72, 35, 33, 79, 82, 42, 50, 60, 19, 74, 69, 82, 47, 37, 62, 58, 39, 20, 74, 68, 62, 17, 74, 78, 54, 28, 32, 82, 30, 42, 31, 53, 37, 53, 79, 51, 71, 76, 63, 54, 42, 25, 77, 41, 55, 75, 45, 16, 61, 56, 65, 16))
+
+
+CSSCR_data$INCTOT <- c(100000, 11600, 105000, 79400, 2300, 73000, 138000, 15000, 24000, 96900, 9300, 35600, 21010, 7400, 500, 8430, 960, 39000, 50000, 100000, 31000, 18000, 27000, 9600, 466800, 28300, 49900, 33000, 8000, 80000, 35000, 30000, 2500, 24400, 4700, 30000,
+ 14000, 45000, 46000, 65000, 39000, 36600, 75000, 56000, 25000, 170000, 16800, 18300, 400, 40000, 1900, 75000, 12000, 125600, 30000, 15100, 226000, 60000, 70000, 60000, 28000, 12130, 570, 23300, 13800, 8000, 54000, 15750, 41000, 1600, 200000, 71000, 30000, 70000, 40000, 45200, 10500, 64000, 90000, 44500, 12800, 64100, 30100, 47000, 45000, 51000, 88000, 180000, 90000, 3000, 10400, 9100, 579000, 4000, 107000, 49400, 9600, 114000, 39000, 22700, 20000, 14200, 40000, 25000, 20000, 50000, 25100, 14000, 22000, 45300, 1900, 30000, 56400, 40000, 9700, 50000, 20000, 9000, 80000, 300, 42400, 40000, 24800, 1200)
+
+```
+
+
+## Data Analysis Essentials 
+
+The R code provided performs fundamental data analysis operations on the  `CSSCR_data` dataset.
+
+```{r}
+dim(CSSCR_data)
+mean(CSSCR_data$INCTOT)
+median(CSSCR_data$INCTOT)
+mean(CSSCR_data$AGE)
+median(CSSCR_data$AGE)
+```
+
+
+## Count 
+
+```{r}
+#install.packages("dplyr")
+library(dplyr)
+count(CSSCR_data,AGE > 30)
+help("count")
+#?count
+
+```
+
+## Simple Plot
+
+```{r}
+plot(CSSCR_data$AGE, CSSCR_data$INCTOT)
+```
+
+## Less Simple Plot
+
+```{r}
+plot(CSSCR_data$AGE,
+     CSSCR_data$INCTOT, 
+     main = "Age vs. Income", 
+     xlab = "Age", 
+     ylab = "Income",
+     ylim = c(0,150000),
+     xlim = c(18,85))
+
+?plot
+```
+
+## Fancy Plot
+
+```{r}
+# Install and load the ggplot2 package
+#install.packages("ggplot2")
+
+library(ggplot2)
+
+# Plotting
+ggplot(CSSCR_data, aes(x = AGE, y = INCTOT)) +
+  geom_point() +  # Scatter plot
+  geom_smooth(method = "lm", se = FALSE, color = "blue") +  # Linear fit
+  geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE, color = "red") +  # Quadratic fit
+  ylim(0, 150000) + 
+  labs(title = "Income vs Age", x = "Age", y = "Total Personal Income")
+
+
+  
+```
+
+# Download Data, `setwd` & `read.csv`
+## National Obesity By State Data Analysis
+
+The dataset on national obesity by state can be found at [Data.gov](https://catalog.data.gov/dataset/national-obesity-by-state-d765a). Follow the link to download the CSV file and save it in your working directory.
+
+```{r}
+getwd()
+
+#setwd("/Users/dadmehr/R")
+
+# Destination file path (where you want to save the file)
+obesity_data <- read.csv("National_Obesity_By_State.csv")
+
+# View the first few rows of the dataset
+head(obesity_data)
+tail(obesity_data, n = 10)
+?tail
+summary(obesity_data)
+?summary
+```
+
+## Pipe Operator `%>%`
+
+The pipe operator `%>%` from the `magrittr` package, which is integrated into `dplyr`, allows for clearer and more intuitive syntax when chaining together multiple data manipulation commands. It passes the result of one expression as the first argument to the next expression, making your code more readable and concise.
+
+### Why Use the Pipe Operator?
+
+- **Readability**: Code is more readable and easier to understand.
+- **Simplification**: Reduces the need for intermediate variables.
+- **Flow of Operations**: Reflects the logical flow of operations, making complex operations easier to follow.
+
+
+### With Pipe
+
+```{r}
+# Load the dplyr package
+library(dplyr)
+
+obesity_data %>%
+  filter(Obesity > 34) %>%
+  arrange(desc(Obesity))
+
+```
+### Without Pipe
+```{r}
+
+arrange(filter(obesity_data, Obesity > 34), desc(Obesity))
+
+```
