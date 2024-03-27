@@ -2,9 +2,10 @@ install.packages("readr") # Install readr package
 install.packages("httr") # Install httr package
 install.packages("jsonlite") # Install jsonlite package
 
-library(httr)
-library(jsonlite)
+
 library(readr) # Load the readr package
+library(httr) # Load the httr package
+library(jsonlite) # Load the jsonlite package
 
 # Use this to load your data
 df <- read.csv("path/to/your/file.csv")
