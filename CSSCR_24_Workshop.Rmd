@@ -222,18 +222,35 @@ The dataset on national obesity by state can be found at [Data.gov](https://cata
 
 ```{r}
 getwd()
-
-#setwd("/Users/dadmehr/R")
+setwd("/Users/dadmehr/R")
 
 # Destination file path (where you want to save the file)
 obesity_data <- read.csv("National_Obesity_By_State.csv")
 
 # View the first few rows of the dataset
 head(obesity_data)
-tail(obesity_data, n = 10)
+?head
+
+# Display the last 10 rows of the obesity_data dataframe
+tail(obesity_data, n = 10) 
 ?tail
+
+# Summarize statistics of each column in obesity_data
 summary(obesity_data)
 ?summary
+
+# Sort obesity_data by Obesity in ascending order
+?order
+obesity_data_sorted_1 <- obesity_data[order(obesity_data$Obesity), ]
+
+# Sort obesity_data by Obesity in descending order
+obesity_data_sorted_1 <- obesity_data[order(obesity_data$Obesity, decreasing = TRUE), ]
+
+# later with %>% -- preferred way 
+library(dplyr)
+obesity_data_sorted_2 <- obesity_data %>% arrange(Obesity)
+?arrange
+
 ```
 
 ## Pipe Operator `%>%`
