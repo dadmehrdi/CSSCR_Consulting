@@ -104,15 +104,23 @@ if (x > 0) {
 
 ```{r}
 for (i in 1:5) {
-  print(i) # here i am printing i 
-  
-  #print(paste("Value of i is", i))
+  print(i)
 }
+
+for (i in c(13,17,19)) {
+  print(i)
+}
+
+#can use seq too 
+seq(1, 10, by = 2)
+
 ```
 
-# Census Data
+# Census Data & `$` Symbol
 
 CSSCR_data is a small random sample (0.005%) of the census data for 2022
+
+In R, the `$` symbol is used to access a specific column or element of a list or data frame by name. So, `data$income` would access the `income` column from the `data` data frame.
 
 
 ```{r}
@@ -141,7 +149,9 @@ median(CSSCR_data$AGE)
 ```
 
 
-## Count 
+## `dplyr` Package & Count 
+
+The `dplyr` package in R is a powerful and popular tool for data manipulation. 
 
 ```{r}
 #install.packages("dplyr")
@@ -153,6 +163,7 @@ help("count")
 ```
 
 ## Simple Plot
+
 
 ```{r}
 plot(CSSCR_data$AGE, CSSCR_data$INCTOT)
@@ -172,9 +183,21 @@ plot(CSSCR_data$AGE,
 ?plot
 ```
 
-## Fancy Plot
+## Fancy Plot; `ggplot2` 
+
+`ggplot2` is a powerful R package for creating complex and highly customizable visualizations. It operates on the principles of the grammar of graphics, allowing for the iterative building of plots by adding layers, scales, and themes.
+
+- `ggplot(CSSCR_data, aes(x = AGE, y = INCTOT))`: Initializes a ggplot with `AGE` as the x-axis and `INCTOT` (total personal income) as the y-axis.
+- `geom_point()`: Adds a scatter plot layer.
+- `geom_smooth(method = "lm", se = FALSE, color = "blue")`: Adds a blue linear regression line without standard error bands.
+- `geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE, color = "red")`: Adds a red quadratic regression line (polynomial of degree 2) without standard error bands.
+- `ylim(0, 150000)`: Sets the y-axis limits to range from 0 to 150,000.
+- `labs(title = "Income vs Age", x = "Age", y = "Total Personal Income")`: Specifies the plot's title and labels for the x and y axes.
+
+
 
 ```{r}
+
 # Install and load the ggplot2 package
 #install.packages("ggplot2")
 
