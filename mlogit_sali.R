@@ -8,6 +8,8 @@ exp_d<-read.csv("/Users/dadmehr/R/CSSCR/Sali/exp_design_R.csv")
 # Load necessary libraries
 library(tidyr)
 library(mlogit)
+library(dplyr)
+
 
 # Assuming your datasets are named 'responses' and 'exp_d'
 # Reshape the 'responses' dataset to long format
@@ -40,6 +42,8 @@ merged_data <- merged_data[!is.na(merged_data$response), ]
 
 # Verify that NA values have been removed
 sum(is.na(merged_data$response))  # Should return 0
+merged_data %>% count(response)
+
 
 # Convert the data to the required format for mlogit
 mlogit_data <- mlogit.data(merged_data, choice = "response", shape = "long", 
