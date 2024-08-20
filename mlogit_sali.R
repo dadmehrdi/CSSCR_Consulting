@@ -23,6 +23,10 @@ responses_long$QES <- paste0("q", responses_long$QES)
 # Merge with 'exp_d' based on 'QES'
 merged_data <- merge(responses_long, exp_d, by = "QES")
 
+merged_data$ALT <- merged_data$ALT-1
+merged_data$response <- merged_data$response-1
+
+
 # Convert necessary columns to appropriate types
 merged_data$Disease_severity <- as.factor(merged_data$Disease_severity)
 merged_data$Age_group <- as.factor(merged_data$Age_group)
@@ -30,6 +34,12 @@ merged_data$QES <- as.factor(merged_data$QES)
 
 # Convert response to logical
 merged_data$response <- as.logical(as.numeric(as.character(merged_data$response)))
+
+# Remove rows with NA in the response column
+merged_data <- merged_data[!is.na(merged_data$response), ]
+
+# Verify that NA values have been removed
+sum(is.na(merged_data$response))  # Should return 0
 
 # Convert the data to the required format for mlogit
 mlogit_data <- mlogit.data(merged_data, choice = "response", shape = "long", 
@@ -42,5 +52,3 @@ model <- mlogit(response ~ Disease_severity + Age_group + Financial_protection +
 
 # Summarize the results
 summary(model)
-
-
